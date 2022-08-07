@@ -8,9 +8,9 @@ set(CMAKE_C_STANDARD_REQUIRED TRUE)
 
 option(TESTING "Build test" OFF)
 
-include_directories(include)
-
 add_subdirectory(deps)
+
+include_directories(include)
 
 add_subdirectory(core)
 
