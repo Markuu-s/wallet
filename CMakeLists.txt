@@ -15,5 +15,6 @@ add_subdirectory(deps)
 add_subdirectory(core)
 
 if (TESTING)
-
+    enable_testing()
+    add_subdirectory(test)
 endif()
