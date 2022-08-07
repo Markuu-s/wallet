@@ -10,6 +10,8 @@ option(TESTING "Build test" OFF)
 
 include_directories(include)
 
+add_subdirectory(deps)
+
 add_subdirectory(core)
 
 if (TESTING)
