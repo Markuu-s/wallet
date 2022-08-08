@@ -18,6 +18,9 @@ enum Errors {
   WALLET_OK = 0,
   SERVER_ERROR,
   BUFFER_ERROR,
+
+  LOGIN_BUSY,
+  WRONG_PASSWORD,
 };
 
 typedef struct {

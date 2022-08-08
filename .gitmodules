@@ -4,3 +4,12 @@
 [submodule "deps/googletest"]
 	path = deps/googletest
 	url = https://github.com/google/googletest
+[submodule "deps/crypto/cryptopp"]
+	path = deps/crypto/cryptopp
+	url = https://github.com/weidai11/cryptopp
+[submodule "deps/cryptopp-cmake"]
+	path = deps/cryptopp-cmake
+	url = https://github.com/Markuu-s/cryptopp-cmake
+[submodule "deps/cryptopp"]
+	path = deps/cryptopp
+	url = https://github.com/weidai11/cryptopp
