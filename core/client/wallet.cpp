@@ -1,11 +1,34 @@
 #include "wallet/wallet.h"
-#include "cryptopp/sha.h"
+
+#include <cryptopp/cryptlib.h>
+#include <cryptopp/files.h>
+#include <cryptopp/filters.h>
+#include <cryptopp/hex.h>
+#include <cryptopp/sha.h>
+
+#include <iostream>
+#include <string>
+
+void SHA256(std::string_view x) {
+  CryptoPP::HexEncoder encoder(new CryptoPP::FileSink(std::cout));
+
+  CryptoPP::SHA256 hash;
+  hash.Update((const CryptoPP::byte *)x.data(), x.size());
+
+  std::string returned;
+  returned.resize(hash.DigestSize());
+  hash.Final((CryptoPP::byte *)returned.data());
+
+  CryptoPP::StringSource(returned, true, new CryptoPP::Redirector(encoder));
+}
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-Errors connect_server(User) {
+Errors connect_server(User user) {
+  std::cout << user.login << ' ' << user.password << '\n';
+  SHA256(user.password);
   return Errors::WALLET_OK;
 }
 

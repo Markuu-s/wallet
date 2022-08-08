@@ -27,6 +27,10 @@ include_directories(include)
 add_subdirectory(deps)
 
 add_subdirectory(core)
+include_directories(
+        ${PROJECT_SOURCE_DIR}/libcore
+        ${PROJECT_SOURCE_DIR}/include
+)
 
 if (TESTING)
     enable_testing()
