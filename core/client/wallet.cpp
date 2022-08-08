@@ -1,4 +1,5 @@
 #include "wallet/wallet.h"
+#include "cryptopp/sha.h"
 
 #ifdef __cplusplus
 extern "C" {
