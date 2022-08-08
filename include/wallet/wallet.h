@@ -4,6 +4,8 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
+
 enum BalanceAsset {
   RUBBLES,
   DOLLARS,
@@ -16,21 +18,30 @@ enum Errors {
   WALLET_OK = 0,
   SERVER_ERROR,
   BUFFER_ERROR,
+
+  LOGIN_BUSY,
+  WRONG_PASSWORD,
 };
 
-Errors connect_server();
-Errors disconnect_server();
+typedef struct {
+  char *login;
+  char *password;
+} User;
 
-Errors add_balance(BalanceAsset, double add);
-Errors set_balance(BalanceAsset, double set);
+Errors connect_server(User);
+Errors disconnect_server(User);
+
+Errors add_balance(User, BalanceAsset, double add);
+Errors set_balance(User, BalanceAsset, double set);
 
 /*
  * Usage:
- * get_all_relative_balance(BalanceAsset, double*,
+ * get_all_relative_balance(User,
+ *                          BalanceAsset, double*,
  *                          BalanceAsset, double*,
  *                          ...);
  */
-Errors get_balance(...);
+Errors get_balance(User, ...);
 
 #ifdef __cplusplus
 }
