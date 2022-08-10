@@ -1,6 +1,5 @@
 #include "wallet/wallet.h"
 #include "common/sha_util.hpp"
-
 #include <iostream>
 #include <string>
 
