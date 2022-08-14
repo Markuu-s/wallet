@@ -4,6 +4,6 @@
 [submodule "deps/googletest"]
 	path = deps/googletest
 	url = https://github.com/google/googletest
-[submodule "deps/json-rpc"]
-	path = deps/json-rpc
-	url = https://github.com/jsonrpcx/json-rpc-cxx
+[submodule "deps/nlohmann-json"]
+	path = deps/nlohmann-json
+	url = https://github.com/nlohmann/json

@@ -1,7 +1,7 @@
 #include "Client.hpp"
 
 #include <boost/asio.hpp>
-#include <jsonrpccxx/client.hpp>
+#include <nlohmann/json.hpp>
 
 namespace core::client {
   using boost::asio::ip::tcp;
@@ -14,11 +14,7 @@ namespace core::client {
   }
 
   std::string_view Client::send_receive(std::string_view const &method,
-                                        ...  /*params*/) {
-    jsonrpccxx::JsonRpcClient client(client_connector_,
-                                     jsonrpccxx::version::v2);
-
-    
+                                        ... /*params*/) {
     boost::system::error_code error_code;
     boost::asio::write(*socket_, boost::asio::buffer("TODO MSG"), error_code);
 
