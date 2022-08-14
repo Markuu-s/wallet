@@ -1,5 +1,6 @@
 #include "wallet/wallet.h"
-#include "common/sha_util.hpp"
+#include "../common/sha_util.hpp" // TODO fix this.
+
 #include <iostream>
 #include <string>
 
