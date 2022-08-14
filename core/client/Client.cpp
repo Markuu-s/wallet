@@ -18,6 +18,7 @@ namespace core::client {
     jsonrpccxx::JsonRpcClient client(client_connector_,
                                      jsonrpccxx::version::v2);
 
+    
     boost::system::error_code error_code;
     boost::asio::write(*socket_, boost::asio::buffer("TODO MSG"), error_code);
 

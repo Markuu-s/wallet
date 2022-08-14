@@ -1,2 +1,5 @@
 add_subdirectory(client)
-add_subdirectory(server)
+
+if (SERVER)
+    add_subdirectory(server)
+endif()
