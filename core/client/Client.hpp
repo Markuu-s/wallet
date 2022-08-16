@@ -10,7 +10,7 @@ namespace core::client {
   class Client {
    public:
     Client() = delete;
-    static void connect(std::string_view const &address, uint8_t const &port);
+    static void connect(std::string_view const &address, int const &port);
     template <typename... Args>
     static std::string_view sendReceive(std::string_view const &method,
                                         Args... args);
