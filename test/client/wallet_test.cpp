@@ -6,5 +6,5 @@
 class Mock {};
 
 TEST(Mock, HelloWorld) {
-  connect_server({"Markuu-s", "1234567890"});
+  connectServer({"Markuu-s", "1234567890"});
 }

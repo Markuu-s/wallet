@@ -28,11 +28,11 @@ typedef struct {
   char *password;
 } User;
 
-Errors connect_server(User);
-Errors disconnect_server(User);
+Errors connectServer(User);
+Errors disconnectServer(User);
 
-Errors add_balance(User, BalanceAsset, double add);
-Errors set_balance(User, BalanceAsset, double set);
+Errors addBalance(User, BalanceAsset, double add);
+Errors setBalance(User, BalanceAsset, double set);
 
 /*
  * Usage:
@@ -41,7 +41,7 @@ Errors set_balance(User, BalanceAsset, double set);
  *                          BalanceAsset, double*,
  *                          ...);
  */
-Errors get_balance(User, ...);
+Errors getBalance(User, ...);
 
 #ifdef __cplusplus
 }

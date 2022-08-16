@@ -1,5 +1,6 @@
 #include "wallet/wallet.h"
-#include "../common/sha_util.hpp" // TODO fix this.
+#include "../common/sha_util.hpp"  // TODO fix this.
+#include "Client.hpp"
 
 #include <iostream>
 #include <string>
@@ -8,29 +9,35 @@
 extern "C" {
 #endif
 
-using core::common::sha_util::bytes_to_string;
-using core::common::sha_util::SHA256;
+using core::common::sha_util::bytesToString;
+using core::common::sha_util::sha256;
 
-Errors connect_server(User user) {
+Errors connectServer(User user) {
   std::cout << user.login << ' ' << user.password << '\n';
-  std::cout << bytes_to_string(SHA256(user.password));
+  std::cout << bytesToString(sha256(user.password));
 
   return Errors::WALLET_OK;
 }
 
-Errors disconnect_server(User) {
+Errors disconnectServer(User) {
   return Errors::WALLET_OK;
 }
 
-Errors add_balance(User, BalanceAsset, double add) {
+Errors addBalance(User user, BalanceAsset balanceAsset, double add) {
+  core::client::Client::sendReceive("addBalance",
+                                    user.login,
+                                    bytesToString(sha256(user.password)),
+                                    balanceAsset,
+                                    add);
+
   return Errors::WALLET_OK;
 }
 
-Errors set_balance(User, BalanceAsset, double set) {
+Errors setBalance(User, BalanceAsset, double set) {
   return Errors::WALLET_OK;
 }
 
-Errors get_balance(User, ...) {
+Errors getBalance(User, ...) {
   return Errors::WALLET_OK;
 }
 
