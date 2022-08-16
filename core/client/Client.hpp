@@ -1,4 +1,6 @@
 #pragma once
+
+#include <iostream>
 #include <string>
 
 #include <boost/asio.hpp>
@@ -14,15 +16,17 @@ namespace core::client {
                                         Args... args);
 
    private:
-    static boost::asio::io_service io_service_;
-    static boost::asio::ip::tcp::socket *socket_;  // TODO make smart pointer
+    inline static boost::asio::io_service io_service_{};
+    inline static boost::asio::ip::tcp::socket *socket_ =
+        nullptr;  // TODO make smart pointer
   };
 
+  void addParams(nlohmann::json &json) {}
   template <typename T, typename... Targs>
   void addParams(nlohmann::json &json, T value, Targs... args) {
     json["params"].push_back(value);
     if (sizeof...(args) == 0) return;
-    add_params(json, args...);
+    addParams(json, args...);
   }
 
   template <typename... Args>
@@ -33,7 +37,8 @@ namespace core::client {
     nlohmann::json json = {{"method", method}, {"params", {}}};
     addParams(json, args...);
 
-    boost::asio::write(*socket_, boost::asio::buffer("TODO MSG"), error_code);
+    boost::asio::write(
+        *socket_, boost::asio::buffer(to_string(json)), error_code);
 
     if (error_code) {
       // TODO error
